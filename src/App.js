@@ -119,7 +119,7 @@ export default function App() {
             domContent={domContent}
             scale={[3.5, 3.5, 3.5]}
             yAxis={-45}
-            modelPath="/oc_october_-_31_irae/scene.gltf"
+            modelPath="./oc_october_-_31_irae/scene.gltf"
             positionY={250}
           >
             <div className="text-center">
@@ -135,7 +135,7 @@ export default function App() {
             domContent={domContent}
             scale={[40, 40, 40]}
             yAxis={-35}
-            modelPath="/plague_doctor/scene.gltf"
+            modelPath="./plague_doctor/scene.gltf"
             positionY={0}
           >
             <div className="text-center">
@@ -150,7 +150,7 @@ export default function App() {
             domContent={domContent}
             scale={[3.5, 3.5, 3.5]}
             yAxis={-45}
-            modelPath="/oc_october_-_31_irae/scene copy.gltf"
+            modelPath="./oc_october_-_31_irae/scene copy.gltf"
             positionY={-250}
           >
             <div className="text-center">
@@ -166,7 +166,7 @@ export default function App() {
             domContent={domContent}
             scale={[40, 40, 40]}
             yAxis={-35}
-            modelPath="/plague_doctor/scene copy.gltf"
+            modelPath="./plague_doctor/scene copy.gltf"
             positionY={-500}
           >
             <div className="text-center">
