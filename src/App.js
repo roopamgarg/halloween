@@ -1,7 +1,9 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useLoader } from "react-three-fiber";
 import * as THREE from "three";
-import { Html, useGLTFLoader } from "drei";
+import { Html, useProgress, useGLTFLoader } from "drei";
+import { a, useTransition } from "@react-spring/web";
+
 import "./App.scss";
 //Components
 import Header from "./components/header";
@@ -102,6 +104,27 @@ const HtmlContent = ({
     </Section>
   );
 };
+
+
+function Loader() {
+  const { active, progress } = useProgress();
+  const transition = useTransition(active, {
+    from: { opacity: 1, progress: 0 },
+    leave: { opacity: 0 },
+    update: { progress },
+  });
+  return transition(
+    ({ progress, opacity }, active) =>
+      active && (
+        <a.div className='loading' style={{ opacity }}>
+          <div className='loading-bar-container'>
+            <a.div className='loading-bar' style={{ width: progress }}></a.div>
+          </div>
+        </a.div>
+      )
+  );
+}
+
 export default function App() {
   const domContent = useRef();
   const scrollArea = useRef();
@@ -131,7 +154,7 @@ export default function App() {
           </HtmlContent>
 
           <HtmlContent
-            bgColor={"#4285F4"}
+            bgColor={"#0F9D58"}
             domContent={domContent}
             scale={[40, 40, 40]}
             yAxis={-35}
@@ -141,26 +164,26 @@ export default function App() {
             <div className="text-center">
               <h1 className="title">Movie Recommendations</h1>
               <div>
-                <button style={{backgroundColor:"#4285F4"}}>Explore Now</button>
+                <button style={{backgroundColor:"#0F9D58"}}>Explore Now</button>
               </div>
             </div>
           </HtmlContent>
           <HtmlContent
-            bgColor={"#F4B400"}
+            bgColor={"#000"}
             domContent={domContent}
-            scale={[3.5, 3.5, 3.5]}
-            yAxis={-45}
-            modelPath="./oc_october_-_31_irae/scene copy.gltf"
+            scale={[20, 20, 20]}
+            yAxis={-60}
+            modelPath="./little_nightmares/scene.gltf"
             positionY={-250}
           >
             <div className="text-center">
-              <h1 className="title">Fortune Teller</h1>
+              <h1 className="title">Horror Plot Generator</h1>
               <div>
-                <button style={{backgroundColor:"#F4B400"}}>Explore Now</button>
+                <button style={{backgroundColor:"#000"}}>Explore Now</button>
               </div>
             </div>
           </HtmlContent>
-
+{/* 
           <HtmlContent
             bgColor={"#0F9D58"}
             domContent={domContent}
@@ -175,9 +198,10 @@ export default function App() {
                 <button style={{backgroundColor:"#0F9D58"}}>Explore Now</button>
               </div>
             </div>
-          </HtmlContent>
+          </HtmlContent> */}
         </Suspense>
       </Canvas>
+      <Loader/>
       <div className="scrollArea" ref={scrollArea} onScroll={onScroll}>
         <div style={{ position: "sticky", top: 0 }} ref={domContent}></div>
         <div style={{ height: `${state.sections * 100}vh` }}></div>
