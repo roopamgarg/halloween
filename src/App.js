@@ -3,6 +3,7 @@ import { Canvas, useFrame, useLoader } from "react-three-fiber";
 import * as THREE from "three";
 import { Html, useProgress, useGLTFLoader } from "drei";
 import { a, useTransition } from "@react-spring/web";
+import { useInView } from "react-intersection-observer";
 
 import "./App.scss";
 //Components
@@ -11,11 +12,11 @@ import { Section } from "./components/section";
 
 //Images
 import fortuneTeller from "./assets/images/fortune_teller.jpg";
-
+//Audio
+import Audio from "./assets/music/horror.mp3";
+//State
 import state from "./components/state";
 
-//intersection observer
-import { useInView } from "react-intersection-observer";
 
 const Model = ({ modelPath }) => {
   const gltf = useGLTFLoader(modelPath, true);
@@ -134,6 +135,7 @@ export default function App() {
   return (
     <>
       <Header />
+      {/* <audio src={Audio} loop={true} autoPlay={true}/> */}
       <Canvas colorManagement camera={{ position: [0, 0, 120], fov: 70 }}>
         <Lights />
         <Suspense fallback={null}>
