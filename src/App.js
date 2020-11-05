@@ -19,7 +19,7 @@ import { useInView } from "react-intersection-observer";
 
 const Model = ({ modelPath }) => {
   const gltf = useGLTFLoader(modelPath, true);
-  console.log(gltf);
+ // console.log(gltf);
   return (
     <primitive
       attach="map"
@@ -171,7 +171,7 @@ export default function App() {
           <HtmlContent
             bgColor={"#000"}
             domContent={domContent}
-            scale={[20, 20, 20]}
+            scale={[18, 18, 18]}
             yAxis={-60}
             modelPath="./little_nightmares/scene.gltf"
             positionY={-250}
